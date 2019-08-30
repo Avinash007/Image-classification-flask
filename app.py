@@ -24,14 +24,36 @@ MODEL_PATH = 'models/your_model.h5'
 
 # Load your trained model
 # model = load_model(MODEL_PATH)
-# model._make_predict_function()          # Necessary
 # print('Model loaded. Start serving...')
 
 # You can also use pretrained model from Keras
 # Check https://keras.io/applications/
+
+
 from keras.applications.resnet50 import ResNet50
 model = ResNet50(weights='imagenet')
+
+
+# Load the model
+def load_model(MODEL_PATH):
+    # Model reconstruction from JSON file
+    model = load_model(MODEL_PATH)
+    print("Model has loaded")
+
+    return model
+
 print('Model loaded. Check http://127.0.0.1:5000/')
+
+
+def save_model(model):
+    # Save the entire model as a pickle
+    model.save(MODEL_PATH)
+    print('Model is Saved')
+
+    
+
+# Save the model
+save_model(model)
 
 
 def model_predict(img_path, model):
